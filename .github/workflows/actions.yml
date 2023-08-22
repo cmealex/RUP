@@ -24,3 +24,7 @@ jobs:
 
       - name: execute py script # run main.py
         run: python getExcelFile.py
+        
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+            commit_message: Changed files
