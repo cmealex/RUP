@@ -28,4 +28,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: downloadedRUP.xlsx
-          path: /
+          path: cmealex/COPSI/
