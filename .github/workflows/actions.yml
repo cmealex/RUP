@@ -23,19 +23,17 @@ jobs:
           pip install -r requirements.txt
 
       
-      - name: execute py script get exce;
+      - name: execute py script getExcelFile
         run: python getExcelFile.py
 
-      - name: execute py script
+      - name: execute py script parseWithPanda
         run: python parseWithPanda.py
-
-      - run: ls
          
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
-          name: downloadedRUP
-          path: downloadedRUP.xlsx
+          name: RUP
+          path: RUP.html
        
 
           
