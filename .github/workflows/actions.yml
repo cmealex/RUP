@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content
+        uses: actions/checkout@main
 
       - name: setup python
         uses: actions/setup-python@v4
@@ -22,5 +22,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute py script # run main.py
+      
+      - name: execute py script getExcelFile
         run: python getExcelFile.py
+
+      - name: execute py script parseWithPanda
+        run: python parseWithPanda.py
+         
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: RUP
+          path: RUP.html
+       
+
+          
+    
