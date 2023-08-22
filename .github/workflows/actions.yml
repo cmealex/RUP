@@ -1,4 +1,4 @@
-name: run getExcelAndHTML.py
+name: run getExcelFile.py
 
 on:
   schedule:
@@ -23,4 +23,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: execute py script # run main.py
-        run: python getExcelAndHTML.py
+        run: python getExcelFile.py
