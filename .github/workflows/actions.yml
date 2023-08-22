@@ -22,19 +22,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      
       - name: execute py script # run main.py
         run: python getExcelFile.py
 
+      - run: ls
+
       - run: mkdir -p path/to/artifact
 
-      - run: echo hello > path/to/artifact/world.txt
+      - run: ls
       
       - uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
-          path: path/to/artifact/world.txt
+          name: downloadedRUP
+          path: /downloadedRUP.xlsx
     
-      - uses: actions/upload-artifact@v3
-        with:
-          name: downloadedRUP.xlsx
-          path: cmealex/COPSI/
