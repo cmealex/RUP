@@ -163,7 +163,7 @@ function myFunction() {
 #https://stackoverflow.com/questions/56627967/pythonic-way-to-apply-a-filter-to-a-table
 #https://www.listendata.com/2019/07/how-to-filter-pandas-dataframe.html
 
-#getExcel()
+getExcel()
 
 df = parseExcel()
 #allNameItems = getItemsByName(df, "Simion")
