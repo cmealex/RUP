@@ -26,9 +26,13 @@ jobs:
       - name: execute py script getExcelFile
         run: python getExcelFile.py
 
+      - run: ls 
+
       - name: execute py script parseWithPanda
         run: python parseWithPanda.py
-         
+
+      - run: ls
+      
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
