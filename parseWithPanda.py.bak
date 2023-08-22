@@ -148,7 +148,7 @@ function myFunction() {
     </html>
     '''
 
-    with open('RUP.html', 'w', encoding="utf-8") as f:
+    with open('templates/RUP.html', 'w', encoding="utf-8") as f:
         f.write(html_string.format(script=html_script, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
 
     #TODO still .. https://www.w3schools.com/howto/howto_js_filter_table.asp
