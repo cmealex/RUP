@@ -1,4 +1,4 @@
-name: run getExcelFile.py
+name: run getExcelAndHTML.py
 
 on:
   schedule:
@@ -23,21 +23,16 @@ jobs:
           pip install -r requirements.txt
 
       
-      - name: execute py script getExcelFile
-        run: python getExcelFile.py
+      - name: execute py script getExcelAndHTML.py
+        run: python getExcelAndHTML.py
 
       - run: ls 
 
-      - name: execute py script parseWithPanda
-        run: python parseWithPanda.py
-
-      - run: ls
-      
       - name: Upload output file
         uses: actions/upload-artifact@v3
         with:
-          name: RUP
-          path: RUP.html
+          name: index
+          path: index.html
        
 
           
