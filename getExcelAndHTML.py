@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import time 
 
 columns = ['Numele (nume anterior) și prenumele','Cod personal']
 
@@ -148,7 +149,7 @@ function myFunction() {
     </html>
     '''
 
-    with open('templates/RUP.html', 'w', encoding="utf-8") as f:
+    with open('index.html', 'w', encoding="utf-8") as f:
         f.write(html_string.format(script=html_script, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
 
     #TODO still .. https://www.w3schools.com/howto/howto_js_filter_table.asp
@@ -164,7 +165,7 @@ function myFunction() {
 #https://www.listendata.com/2019/07/how-to-filter-pandas-dataframe.html
 
 getExcel()
-
+time.sleep(3)
 df = parseExcel()
 #allNameItems = getItemsByName(df, "Simion")
 #print("allNameItems:", allNameItems)
