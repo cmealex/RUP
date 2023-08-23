@@ -2,7 +2,7 @@ name: run getExcelAndHTML.py
 
 on:
   schedule:
-    - cron: '23 13 * * *' # 
+    - cron: '0 23 * * Mon-Fri' # each worday at 11PM 
   workflow_dispatch:
 
 jobs:
