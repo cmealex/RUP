@@ -30,6 +30,8 @@ jobs:
       
       - name: Commit files
         run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
           git add index.html
           git commit -m "Add changes"
       - name: Push changes
