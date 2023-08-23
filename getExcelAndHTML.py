@@ -8,6 +8,8 @@ columns = ['Numele (nume anterior) și prenumele','Cod personal']
 
 pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
 
+version = ""
+
 def getExcel():
     URL = "https://www.copsi.ro/index.php/registre"
     page = requests.get(URL)
@@ -16,8 +18,9 @@ def getExcel():
 
     el = soup.find("a", string="Descărcați fișierul...")
     link_url = el["href"]
-
-    print("link_url:", link_url)
+    global version
+    version = link_url.split("/")[-1]
+    print("version:", version)
     # should print '/images/RUP_Partea_I_-_Atestate_de_liberă_practică-05.07.2023.xlsx'
 
     prefix = "https://www.copsi.ro/"
@@ -85,6 +88,7 @@ function showTable() {
   document.getElementById("myButton").style.display = "none";
   document.getElementById("myButton2").style.display = "";
   document.getElementById("myInfo").style.display = "";
+  document.getElementById("myFooter").style.display = "";
 
   let input = document.getElementById("myInput");
   input.addEventListener("keydown", function(event) {
@@ -136,8 +140,8 @@ function myFunction() {
         <div class="wrap-flex">
           <input class="input" type="text" id="myInput" onkeyup="myFunction()"  placeholder="Cautati folosind: Nume Prenume (minim 4 caractere)">
           <button class="submit" type="submit" id="myButton" onclick="showTable()" disabled="disabled">Afiseaza tabelul</button>
-          <button class="submit" type="submit" id="myButton2" onclick="refreshPage()" style="display: none;">Cautare noua</button>
-          <p id="myInfo" style="display: none;"> (Daca doriti sa cautati alt psiholog, dati click pe "Cautare noua" - <u> nu puteti sterge textul introdus </u>)
+          <button class="submit" type="submit" id="myButton2" onclick="refreshPage()" style="display: none;">Cautare noua</button> 
+          <p id="myInfo" style="display: none;"> (Daca doriti sa cautati alt psiholog, dati click pe "Cautare noua" - <u> nu puteti sterge textul introdus</u>)
           </p>
           </br>
         </div>
@@ -145,12 +149,20 @@ function myFunction() {
         {table}
         </div>
         {script}
+    <footer id="myFooter" style="display: none;"> 
+    <p>Pagina generata folosind ultima versiune: {version}, din pagina: https://www.copsi.ro/registre
+    <p>Pentru mai multe informatii, intrati <a href="despre.html">aici</a>
+    <p>Implementata de Alex Simion</p>
+    <p>© Copyright 2023
+      <a href="https://www.psyalexsimion.com/">www.psyalexsimion.com</a>
+    <p>
+    </footer>
     </body>
     </html>
     '''
 
     with open('index.html', 'w', encoding="utf-8") as f:
-        f.write(html_string.format(script=html_script, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
+        f.write(html_string.format(script=html_script, version=version, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
 
     #TODO still .. https://www.w3schools.com/howto/howto_js_filter_table.asp
     #or:
