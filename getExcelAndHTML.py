@@ -45,7 +45,7 @@ def checkIfNewLink():
     else:
         print("new link:", linkFromFile)
         with open('downloadURL.txt', "w", encoding="utf-8") as f:
-            f.write(linkFromFile)
+            f.write(downloadLink)
         return True   
     
 def parseExcel(fileName = 'downloadedRUP.xlsx'):
