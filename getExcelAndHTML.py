@@ -159,7 +159,7 @@ function myFunction() {
           <button class="submit" type="submit" id="myButton" onclick="showTable()" disabled="disabled">Afiseaza tabelul</button>
           <button class="submit" type="submit" id="myButton2" onclick="refreshPage()" style="display: none;">Cautare noua</button> 
           <p id="myInfo" style="display: none;"> (Daca doriti sa cautati alt psiholog, dati click pe "Cautare noua" - <u> nu puteti sterge textul introdus</u>)
-          <p id="initialInfo" style="color:red"> <b>Atentie!</b> Folositi <b>diacritice</b> si <b>cratime</b> acolo unde este cazul
+          <p id="initialInfo" style="color:red"> <b>Atentie!</b> Folositi <b>diacritice</b> si <b>cratime</b> acolo unde este cazul!
           </p>
           </br>
         </div>
