@@ -43,7 +43,7 @@ def checkIfNewLink():
         print("no new link:", linkFromFile)
         return False
     else:
-        print("new link:", linkFromFile)
+        print("new link:", downloadLink)
         with open('downloadURL.txt', "w", encoding="utf-8") as f:
             f.write(downloadLink)
         return True   
@@ -168,8 +168,13 @@ function myFunction() {
         </div>
         {script}
     <footer id="myFooter" style="display: none;"> 
-    <p>Pagina generata (la ora 23, ziua precedenta) folosind ultima versiune: {version}, din pagina: https://www.copsi.ro/registre
-    <p>Pentru mai multe informatii, intrati <a href="despre.html">aici</a>
+    <p>Pagina generata (la ora 23, ziua precedenta) folosind ultima versiune: <a href="{downloadLink}">{version}</a>, din pagina: https://www.copsi.ro/registre
+    <p>Daca nu ati gasit ce cautati, apasati "Cautare noua" si incercati metoda aceasta: introduceti "Numele" mai intai, apasati "Afiseaza tabelul", vizualizati rezultatele si apoi introduceti "Prenumele"
+    <p>Ca si verificare finala, downloadati fisierul excel de mai sus (dand click pe link) si refaceti cautarea in excel 
+    </br>
+    </br>
+    </br>
+    <p>Pentru informatii despre aceasta pagina, intrati <a href="despre.html">aici</a>
     <p>Implementata de Alex Simion</p>
     <p>© Copyright 2023
       <a href="https://www.psyalexsimion.com/">www.psyalexsimion.com</a>
@@ -180,7 +185,7 @@ function myFunction() {
     '''
 
     with open('index.html', 'w', encoding="utf-8") as f:
-        f.write(html_string.format(script=html_script, version=version, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
+        f.write(html_string.format(script=html_script, version=version, downloadLink=downloadLink, table=df.to_html(classes='myTable', index=False, justify="right", table_id="myTableID", ))) 
 
     #TODO still .. https://www.w3schools.com/howto/howto_js_filter_table.asp
     #or:
