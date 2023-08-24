@@ -27,8 +27,6 @@ def getExcel():
     prefix = "https://www.copsi.ro/"
     fillUrl = prefix + link_url
     print("fillUrl:", fillUrl)
-    with open('downloadURL.txt', "w", encoding="utf-8") as f:
-        f.write(fillUrl)
     global downloadLink
     downloadLink = fillUrl
     #should print: https://www.copsi.ro/images/RUP_Partea_I_-_Atestate_de_liberă_practică-05.07.2023.xlsx
