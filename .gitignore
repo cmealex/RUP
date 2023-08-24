@@ -6,7 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+
+
+#Mine
 *.bak 
+*.xlsx
+index.html
+
 
 # Distribution / packaging
 .Python

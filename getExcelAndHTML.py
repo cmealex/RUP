@@ -9,6 +9,7 @@ columns = ['Numele (nume anterior) și prenumele','Cod personal']
 pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
 
 version = ""
+downloadLink = "" 
 
 def getExcel():
     URL = "https://www.copsi.ro/index.php/registre"
@@ -26,12 +27,29 @@ def getExcel():
     prefix = "https://www.copsi.ro/"
     fillUrl = prefix + link_url
     print("fillUrl:", fillUrl)
+    with open('downloadURL.txt', "w", encoding="utf-8") as f:
+        f.write(fillUrl)
+    global downloadLink
+    downloadLink = fillUrl
     #should print: https://www.copsi.ro/images/RUP_Partea_I_-_Atestate_de_liberă_practică-05.07.2023.xlsx
 
     # Section 2 - get excel by url and save html file 
     excelFile = requests.get(fillUrl)
     open('downloadedRUP.xlsx', 'wb').write(excelFile.content)
 
+def checkIfNewLink():
+    with open('downloadURL.txt', encoding="utf-8") as f:
+        linkFromFile = f.read()
+        print(linkFromFile)
+    if linkFromFile == downloadLink:
+        print("no new link:", linkFromFile)
+        return False
+    else:
+        print("new link:", linkFromFile)
+        with open('downloadURL.txt', "w", encoding="utf-8") as f:
+            f.write(linkFromFile)
+        return True   
+    
 def parseExcel(fileName = 'downloadedRUP.xlsx'):
 
     df = pd.read_excel(fileName)
@@ -88,6 +106,7 @@ function showTable() {
   document.getElementById("myButton").style.display = "none";
   document.getElementById("myButton2").style.display = "";
   document.getElementById("myInfo").style.display = "";
+  document.getElementById("initialInfo").style.display = "none";
   document.getElementById("myFooter").style.display = "";
 
   let input = document.getElementById("myInput");
@@ -142,6 +161,7 @@ function myFunction() {
           <button class="submit" type="submit" id="myButton" onclick="showTable()" disabled="disabled">Afiseaza tabelul</button>
           <button class="submit" type="submit" id="myButton2" onclick="refreshPage()" style="display: none;">Cautare noua</button> 
           <p id="myInfo" style="display: none;"> (Daca doriti sa cautati alt psiholog, dati click pe "Cautare noua" - <u> nu puteti sterge textul introdus</u>)
+          <p id="initialInfo" style="color:red"> <b>Atentie!</b> Folositi <b>diacritice</b> si <b>cratime</b> acolo unde este cazul
           </p>
           </br>
         </div>
@@ -150,7 +170,7 @@ function myFunction() {
         </div>
         {script}
     <footer id="myFooter" style="display: none;"> 
-    <p>Pagina generata folosind ultima versiune: {version}, din pagina: https://www.copsi.ro/registre
+    <p>Pagina generata (la ora 23, ziua precedenta) folosind ultima versiune: {version}, din pagina: https://www.copsi.ro/registre
     <p>Pentru mai multe informatii, intrati <a href="despre.html">aici</a>
     <p>Implementata de Alex Simion</p>
     <p>© Copyright 2023
@@ -177,9 +197,11 @@ function myFunction() {
 #https://www.listendata.com/2019/07/how-to-filter-pandas-dataframe.html
 
 getExcel()
-time.sleep(3)
-df = parseExcel()
-#allNameItems = getItemsByName(df, "Simion")
-#print("allNameItems:", allNameItems)
-returnGeneratedHTML(df)
+seeIfNewLink = checkIfNewLink()
+if seeIfNewLink:
+    time.sleep(3)
+    df = parseExcel()
+    #allNameItems = getItemsByName(df, "Simion")
+    #print("allNameItems:", allNameItems)
+    returnGeneratedHTML(df)
 
