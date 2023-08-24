@@ -170,7 +170,7 @@ function myFunction() {
     <footer id="myFooter" style="display: none;"> 
     <p>Pagina generata (la ora 23, ziua precedenta) folosind ultima versiune: <a href="{downloadLink}">{version}</a>, din pagina: https://www.copsi.ro/registre
     <p>Daca nu ati gasit ce cautati, apasati "Cautare noua" si incercati metoda aceasta: introduceti "Numele" mai intai, apasati "Afiseaza tabelul", vizualizati rezultatele si apoi introduceti "Prenumele"
-    <p>Ca si verificare finala, downloadati fisierul excel de mai sus (dand click pe link) si refaceti cautarea in excel 
+    <p>Ca si verificare finala, downloadati fisierul excel de mai sus (dand click pe link) si refaceti cautarea in excel
     </br>
     </br>
     </br>
