@@ -118,7 +118,8 @@ function showTable() {
 
 function refreshPage() {
   window.location.reload();
-}
+  document.getElementById("myInput").value = "";
+  }
 
 function myFunction() {
   // Declare variables
@@ -162,7 +163,7 @@ function myFunction() {
     <link rel="stylesheet" type="text/css" href="other.css"/>
     <body>
         <div class="wrap-flex">
-          <input class="input" type="text" id="myInput" onkeyup="myFunction()"  placeholder="Cautati folosind: Nume Prenume (minim 4 caractere)">
+          <input class="input" type="text" id="myInput" onkeyup="myFunction()"  placeholder="Cautati folosind: 'Nume Prenume' sau 'Codul RUP' (minim 4 caractere)">
           <button class="submit" type="submit" id="myButton" onclick="showTable()" disabled="disabled">Afiseaza tabelul</button>
           <button class="submit" type="submit" id="myButton2" onclick="refreshPage()" style="display: none;">Cautare noua</button> 
           <p id="myInfo" style="display: none;"> (Daca doriti sa cautati alt psiholog, dati click pe "Cautare noua" - <u> nu puteti sterge textul introdus</u>)
