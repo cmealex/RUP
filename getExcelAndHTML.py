@@ -128,9 +128,16 @@ function myFunction() {
   table = document.getElementsByClassName("myTable");
   tr = document.getElementsByTagName("tr"); //was table before
 
+  let isnum = /^\d+$/.test(filter);
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[7]; //TODO make dynamic?
+    if (!isnum){
+        td = tr[i].getElementsByTagName("td")[7]; //name
+        }
+    else{
+        td = tr[i].getElementsByTagName("td")[3]; //cod RUP
+        }
+    
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
